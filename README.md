@@ -1,5 +1,5 @@
 # Landing Page Projet (**_Garden Land_**)
-![Garden Land](assets/logo.png)
+![Garden Land](assets/logo-alt.png)
 
 ## Table of Content
 - [Landing Page Projet (**_Garden Land_**)](#landing-page-projet-garden-land)
