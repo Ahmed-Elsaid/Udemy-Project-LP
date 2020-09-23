@@ -1,0 +1,779 @@
+/*
+ *
+ * CSS written based on SMACSS architecture.
+ * To learn more, visit: http://smacss.com/
+ * 
+ * For simplicity, no reset or normalize is added. 
+ * To learn more, visit: https://css-tricks.com/reboot-resets-reasoning/
+ *
+*/
+
+
+/* ---- Base Rules ---- */
+*,
+::after,
+::before{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+
+html{
+    font-size: 62.5%;
+    /* Hide Scroll Bar*/
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: seagreen #fff;
+    -ms-overflow-style: none; /* IE 10+  */
+}
+
+html::-webkit-scrollbar {
+    width: 10px;
+    background-color:#fff;
+}
+
+html::-webkit-scrollbar-thumb {
+    background-color: seagreen;
+} 
+
+
+body {
+    margin: 0;
+    font-family: 'Merriweather', serif;
+    color: #fff;
+}
+
+/* Background Video */
+.video{
+    position: fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+.video__src{
+    object-fit: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+.video__bg{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgb(0,0,0,0.7);
+}
+
+
+/* Typeography General*/
+h1 {
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 10rem;
+    margin:0;
+    color:#9ab58f;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    opacity:0;
+    width:100%;
+    text-align: center;
+    animation: h1RiseUp 1s ease-in 0.2s;
+    animation-fill-mode: forwards;
+}
+
+h2 {
+    font-family: 'Oxygen', Sans-Serif;
+    font-size: 3em;
+    color: #fff;
+    text-align: center;
+    padding-bottom: 1.5rem;
+    position: relative;
+    margin-bottom: 5rem;
+}
+
+h2::after{
+    content: '';
+    display: block;
+    width: 12rem;
+    height: 3px;
+    background-color: #2e8b57;
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+}
+
+.about__info {
+    line-height: 1.7;
+    color: #dadada;
+    padding-top: 1.5rem;
+    font-size: 1.8rem;
+    text-align: center;
+}
+
+.product__par{
+    font-size: 1.5rem;
+    color:#dadada;
+    text-align: left;
+    line-height: 1.7;
+}
+.product__title {
+    font-size: 1.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 1rem; 
+}
+
+/* ---- Layout Rules ---- */
+main {
+    /* margin: 10vh 1em 10vh; */
+    margin:0;
+}
+
+.main__hero {
+    min-height: 40vh;
+    padding-top: 3em;
+    height: 100vh;
+}
+
+section {
+    position: relative;
+    padding: 10rem 0;
+    transition: all 0.5s ease;
+    min-height: 80vh;
+}
+
+section:not(:last-of-type) {
+    margin-bottom:2rem;
+}
+
+/* ---- Module Rules ---- */
+
+/* Header Styles */
+.page__header {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.page__logo {
+    width:12rem;
+    transform: scale(0);
+    animation: logoScale 1s ease-in-out 0.2s forwards;
+}
+
+.page__logo img {
+    width:100%;
+
+}
+
+/* Navigation Styles*/
+.navbar__menu ul {
+    padding-left: 0;
+    margin: 0;
+    text-align: right;
+    position: relative;
+    top:-30rem;
+    animation: navDown 1s ease-out 0.2s forwards;
+}
+
+.navbar__menu li {
+    display: inline-block;
+}
+
+.navbar__menu .menu__link {
+    display: block;
+    padding: 1em;
+    font-weight: bold;
+    text-decoration: none;
+    color: #dadada;
+    font-size: 1.6rem;
+    transition: all 0.5s ease;
+}
+
+.navbar__menu .menu__link:hover {
+    background: #7aa977;
+    color:#012702;
+    border-radius: 3px;
+}
+
+.menu__hamBtn {
+    display: none;
+}
+
+@media only screen and (max-width: 50em) {
+
+.page__header {
+    justify-content: space-between;
+    align-items: unset;
+    z-index: 99999;
+}
+
+.navbar__menu {
+    position: relative;
+    top: 2rem;
+    left:12rem;
+    transition: all 0.5s ease;
+}
+
+.toggle__menu {
+    left : 0 !important;
+}
+
+.navbar__menu ul {
+    position: relative;
+    text-align: left;
+    background-color: #f1f1f1;    
+}
+
+.navbar__menu li {
+    display: block;
+}
+
+.navbar__menu li:hover {
+    background-color: #7aa977;
+}
+
+.menu__link {
+    color:#333 !important;
+    position: relative;
+    left: 0;
+}
+
+.menu__link:hover {
+    position: relative;
+    left:1rem;
+    background-color: unset !important;
+}
+
+.page__logo {
+    margin-left: 3rem;
+}
+
+.menu__hamBtn {
+    display: block;
+    margin-right: 3rem; 
+    cursor: pointer;
+    position: absolute;
+    right: 85px;
+    background-color: #f1f1f1;
+    padding: 1rem;
+}
+
+.menu__hamBtn i {
+    font-size: 3rem;
+    color:seagreen;
+    transition: all 0.5s ease;
+    transform:skew(0deg) scale(0.9)
+}
+
+.menu__hamBtn i:hover {
+    transform: skew(10deg, 20deg) scale(1)
+}
+}
+
+/* Product Styles */
+
+.product__cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.product__card {
+    width:50%;
+    padding: 3rem 2rem;
+    display: flex;
+}
+
+
+@media only screen and (max-width: 50em) {
+    .product__card {
+        width:100%;
+    }
+}
+
+.product__icon {
+    margin-right: 2.5rem;
+}
+
+.product__icon i{
+    font-size: 5rem;
+    color:#2e8b57;
+}
+
+
+/* Gallery Styles */
+.gallery .landing__container {
+    width:100%;
+    margin:0;
+    padding:0;
+}
+.gallery__block {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.gallery__figure {
+    width: calc(100% / 4);
+    overflow: hidden;
+    height: 20rem;
+    position: relative;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 75em) {
+    .gallery__figure {
+        width:calc(100% /3);
+    }
+}
+
+@media only screen and (max-width: 50em) {
+    .gallery__figure {
+        width:calc(100% /2);
+    }
+}
+
+@media only screen and (max-width: 37.5em) {
+    .gallery__figure {
+        width:100%;
+    }
+}
+
+.gallery__figure:hover .gallery__img {
+    transform: none;
+}
+
+.gallery__figure:hover .gallery__name {
+    transform: translate(-50%, -50%);
+}
+
+.gallery__figure:hover .gallery__bg {
+    opacity: 0;
+}
+
+.gallery__name {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    color: #2e8b57;
+    font-size: 3rem;
+    background: rgb(255 255 255 / 80%);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    transition: all 0.8s 0.2s ease;
+}
+
+.gallery__img {
+    width: 100%;
+    transform: scale(1.2);
+    transition: all 0.5s ease;
+}
+
+.gallery__bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #000;
+    opacity:0.3;
+    z-index: 1;
+    transition: all 0.5s ease;
+}
+
+/* Blog Styles */
+.blog__articles {
+    display: flex;
+}
+
+
+@media only screen and (max-width: 50em) {
+    .blog__articles {
+        flex-wrap: wrap;
+    }
+}
+
+.blog__article {
+    margin: 0 2rem;
+}
+
+
+@media only screen and (max-width: 50em) {
+    .blog__article {
+        margin: 2rem 0;
+    }
+}
+
+.blog__title {
+    font-size: 2.3rem;
+    margin: 2rem 0;
+}
+
+.blog__par {
+    font-size: 1.4rem;
+    line-height: 1.5;  
+}
+.blog__image img{
+    width:100%;
+}
+
+.blog__link {
+    text-decoration: none;
+    color:#2e8b57;
+}
+
+.blog__link:hover {
+    text-decoration: underline;
+    color:#333;
+}
+
+/* Contact Styles */
+
+.contact__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact__block {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width:75%;
+}
+
+
+@media only screen and (max-width: 50em) {
+    .contact__block {
+        width:100%;
+    }
+}
+
+.contact__block label {
+    width: 20rem;
+    font-size: 1.5rem;
+}
+
+
+@media only screen and (max-width: 50em) {
+    .contact__block label {
+        width:25rem;
+    }
+}
+
+.contact__name,
+.contact__mail,
+.contact__msg {
+    width: 45rem;
+    padding: 1rem 0.5rem;
+    margin-left: 2rem;
+    outline: none;
+    background: unset;
+    border: 1px solid #d1d1d1;
+    margin-bottom: 1.5rem;
+}
+
+.contact__block button {
+    all: unset;
+    position: absolute;
+    right: 8rem;
+    top: 20px;
+    font-size: 1.6rem;
+    border: 1px solid #d1d1d1;
+    padding: 0.5rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.contact__block button:hover {
+    background-color: #2e8b57;
+}
+
+.contact__block button:active {
+    transform: translateY(2px);
+}
+
+
+/* Footer Styles */
+.page__footer {
+    position: relative;
+    background: rgb(0 0 0 / 80%);
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+.page__footer p {
+    color: #fff;
+}
+
+
+/* ---- Theme Rules ---- */
+/* Landing Container Styles */
+.landing__container {
+    width:75%;
+    margin: 2rem auto 0;
+    padding:1rem;
+    transition: all 0.5s ease;
+}
+
+@media only screen and (max-width: 37.5em) {
+    .landing__container {
+        width:100%;
+    }
+}
+
+/* Background Circles */
+/* Note that background circles are created with psuedo elements before and after */
+/* Circles appear to be random do to use of :nth-of-type psuedo class */
+section:nth-of-type(odd) .landing__container::before {
+    content: '';
+    background: rgba(255, 255, 255, 0.187);
+    position: absolute;
+    width: 20vh;
+    height: 20vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(even) .landing__container::before {
+    content: '';
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
+    position: absolute;
+    top: 3em;
+    right: 3em;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(3n) .landing__container::after {
+    content: '';
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 10vh;
+    height: 10vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+section:nth-of-type(3n + 1) .landing__container::after {
+    content: '';
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,.1) 0%, rgba(255,255,255,.2) 100%);
+    position: absolute;
+    right: 20vw;
+    bottom: -5em;
+    width: 15vh;
+    height: 15vh;
+    border-radius: 50%;
+    opacity: 0;
+    transition: ease 0.5s all;
+}
+
+
+/* ---- Theme State Rules ---- */
+/* Section Active Styles */
+/* Note: your-active-class class is applied through javascript. You should update the class here and in the index.html to what you set in your javascript file.  */
+section.active-section .landing__container::before {
+    opacity: 1;
+    animation: rotate 4s linear 0s infinite forwards;
+}
+
+section.active-section .landing__container::after {
+    opacity: 1;
+    animation: rotate 5s linear 0s infinite forwards reverse;
+}
+
+section.active-section {
+    background-color: rgb(246 255 239 / 80%);
+}
+
+section.active-section p {
+    color: #333;
+}
+
+section.active-section h2 {
+    color: #333;
+}
+
+section.active-section h3 {
+    color: #333;
+}
+
+section.active-section label {
+    color: #333;
+}
+
+section.active-section input,
+section.active-section textarea {
+    border:1px solid  #2e8b57;
+}
+
+section.active-section button {
+    color: #333;
+    border:1px solid  #2e8b57;
+}
+
+section.active-section button:hover {
+    color: #d1d1dd;
+}
+
+section.active-section .gallery__name {
+    color: #2e8b57;
+}
+
+/* Fixed Navigation bar */
+.fixed-nav {
+    height: 12rem;
+    background-color:rgba(78, 93, 73,0.8);
+    z-index:9999999999;
+    transition: all 0.5s ease;
+}
+
+.fixed-nav .navbar__menu,
+.fixed-nav .navbar__list,
+.fixed-nav li,
+.fixed-nav .menu__link{
+    height: 12rem;
+}
+
+.fixed-nav .menu__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:12rem;
+}
+
+.fixed-nav .menu__link:hover {
+   background-color: #f1f1f1;
+   border-radius: unset;
+}
+
+/* Active link Class */
+.active-link {
+    background-color:rgba(246, 255, 239, 0.8);
+    color:#012702 !important;
+}
+
+/* Top Button Styling */
+.page__top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    color: #f1f1f1;
+    background: #2e8b56d0;
+    font-size: 2rem;
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index:999;
+}
+
+.page__top:hover {
+    background-color: rgba(51, 51, 51, 0.795);
+}
+
+/* Collapse Button Styles */
+.section__collapse {
+    width:3rem;
+    height:3rem;
+    position: absolute;
+    right: 5rem;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    background-color: seagreen;
+    z-index:99999999;
+}
+
+@media only screen and (max-width: 50em) {
+    .section__collapse {
+        right: unset;
+        left:5rem;
+    }
+}
+
+.section__collapse:hover {
+    background-color: #fff;
+}
+
+.section__collapse:hover i {
+    color: seagreen;
+}
+
+.section__collapse i {
+    color:#fff;
+    font-size: 3rem;
+}
+
+.section__hide {
+    height: 0;
+    overflow: hidden;
+    padding:0;
+    margin:0;
+}
+
+/* Section Active Styles Keyframe Animations */
+@keyframes rotate {
+	from {
+		transform: rotate(0deg)
+		           translate(-1em)
+		           rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg)
+		           translate(-1em) 
+		           rotate(-360deg);
+	}
+}
+
+@keyframes h1RiseUp {
+    from {
+        transform: translate(-50%, 0);
+        opacity:0;
+    }
+    to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+@keyframes logoScale {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes navDown {
+    from {
+        top:-30rem;
+    }
+    to {
+        top:0
+    }
+}
