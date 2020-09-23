@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Manipulating the DOM</title>
+  <!-- Load Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Fira+Sans:900|Merriweather&display=swap" rel="stylesheet">  <!-- Load Styles -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">  
+  <link href="css/styles.css" rel="stylesheet">
+  <link rel="shortcut icon"  href="assets/favicon.ico">
+</head>
+<body>
+  <!-- HTML Follows BEM naming conventions 
+  IDs are only used for sections to connect menu anchors to sections -->
+  <div class="video">
+    <video loop muted autoplay class="video__src">
+      <source src="assets/video.mp4" type="video/mp4">
+    </video>
+    <div class="video__bg"></div>
+  </div>
+  <header class="page__header">
+      <div class="page__logo">
+        <img src="assets/logo.png" alt="logo" id="logo">
+      </div>
+      <nav class="navbar__menu">
+        <div class="menu__hamBtn" id="toggleMenu">
+          <i class="fa fa-bars" aria-hidden="true"></i>
+        </div>
+        <!-- Navigation starts as empty UL that will be populated with JS -->
+        <ul id="navbar__list">
+          <!-- <li><a href="#" class="menu__link">About us</a></li> -->
+        </ul>
+      </nav>
+  </header>
+  <main>
+    <header class="main__hero">
+      <h1>Garden Land</h1>
+    </header>
+    <!-- Each Section has an ID (used for the anchor) and 
+    a data attribute that will populate the li node.
+    Adding more sections will automatically populate nav.
+    The first section is set to active class by default -->
+    <section id="About us" data-nav="About us" class="about">
+      <div class="landing__container">
+        <h2 class="about__header">Who Are We</h2>
+        <p  class="about__info">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi fermentum metus faucibus lectus pharetra dapibus. Suspendisse potenti. Aenean aliquam elementum mi, ac euismod augue. Donec eget lacinia ex. Phasellus imperdiet porta orci eget mollis. Sed convallis sollicitudin mauris ac tincidunt. Donec bibendum, nulla eget bibendum consectetur, sem nisi aliquam leo, ut pulvinar quam nunc eu augue. Pellentesque maximus imperdiet elit a pharetra. Duis lectus mi, aliquam in mi quis, aliquam porttitor lacus. Morbi a tincidunt felis. Sed leo nunc, pharetra et elementum non, faucibus vitae elit. Integer nec libero venenatis libero ultricies molestie semper in tellus. Sed congue et odio sed euismod.</p>
+      </div>
+    </section> <!-- End About us Section -->
+    <section id="Products" data-nav="Products" class="product">
+      <div class="landing__container">
+        <h2>Our Products</h2>
+        <div class="product__cards">
+          <div class="product__card">
+            <div class="product__icon">
+              <i class="fas fa-seedling"></i>
+            </div>
+            <div class="product__info">
+              <h3 class="product__title">seeds</h3>
+              <p class="product__par">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                A voluptatum quos iusto quod voluptatibus iure voluptate exercitationem dolores 
+                fugit nam, quae mollitia corporis commodi aperiam perspiciatis dolor minima. 
+                Itaque, expedita.</p>
+            </div>
+          </div>
+          <!-- End First Card -->
+          <div class="product__card">
+            <div class="product__icon">
+              <i class="fas fa-apple-alt"></i>            
+            </div>
+            <div class="product__info">
+              <h3 class="product__title">fruit plants</h3>
+              <p class="product__par">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                A voluptatum quos iusto quod voluptatibus iure voluptate exercitationem dolores 
+                fugit nam, quae mollitia corporis commodi aperiam perspiciatis dolor minima. 
+                Itaque, expedita.</p>
+            </div>
+          </div>
+          <!-- End Second Card -->
+          <div class="product__card">
+            <div class="product__icon">
+              <i class="fas fa-wind"></i>
+            </div>
+            <div class="product__info">
+              <h3 class="product__title">flowers</h3>
+              <p class="product__par">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                A voluptatum quos iusto quod voluptatibus iure voluptate exercitationem dolores 
+                fugit nam, quae mollitia corporis commodi aperiam perspiciatis dolor minima. 
+                Itaque, expedita.</p>
+            </div>
+          </div>
+          <!-- End Third Card -->
+          <div class="product__card">
+            <div class="product__icon">
+              <i class="fab fa-pagelines"></i>
+            </div>
+            <div class="product__info">
+              <h3 class="product__title">kitchen herbs</h3>
+              <p class="product__par">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                A voluptatum quos iusto quod voluptatibus iure voluptate exercitationem dolores 
+                fugit nam, quae mollitia corporis commodi aperiam perspiciatis dolor minima. 
+                Itaque, expedita.</p>
+            </div>
+          </div>
+          <!-- End Fourth Card -->
+        </div> 
+      </div>
+    </section> <!-- End Product Section -->
+    <section id="Gallery" data-nav="Gallery" class="gallery">
+        <div class="landing__container">
+          <h2>Gallery</h2>
+          <div class="gallery__block">
+            <figure class="gallery__figure">
+              <div class="gallery__bg"></div>
+              <p class="gallery__name">Seed 1</p>
+              <img src="assets/Gallery/seed_1.jpg" alt="Seed 1" class="gallery__img">
+            </figure>
+            <!-- End First image -->
+            <figure class="gallery__figure">
+              <div class="gallery__bg"></div>
+              <p class="gallery__name">Herb 1</p>
+              <img src="assets/Gallery/herb-1.jpg" alt="herb 1" class="gallery__img">
+            </figure>
+            <!-- End Second image -->
+            <figure class="gallery__figure">
+              <div class="gallery__bg"></div>
+              <p class="gallery__name">flower 1</p>
+              <img src="assets/Gallery/flower-1.jpg" alt="Flower 1" class="gallery__img">
+            </figure>
+            <!-- End Third image -->
+            <figure class="gallery__figure">
+              <div class="gallery__bg"></div>
+              <p class="gallery__name">Fruit 1</p>
+              <img src="assets/Gallery/fruit-1.jpg" alt="Fruit 1" class="gallery__img">
+            </figure>
+            <!-- End Fourth image -->
+            <figure class="gallery__figure">
+              <div class="gallery__bg"></div>
+              <p class="gallery__name">Seed 2</p>
+              <img src="assets/Gallery/seed_2.jpg" alt="Seed 2" class="gallery__img">
+            </figure>
+            <!-- End Fifth image -->
+            <figure class="gallery__figure">
+              <div class="gallery__bg"></div>
+              <p class="gallery__name">Herb 2</p>
+              <img src="assets/Gallery/herb-2.jpg" alt="Herb 2" class="gallery__img">
+            </figure>
+            <!-- End sixth image -->
+            <figure class="gallery__figure">
+              <div class="gallery__bg"></div>
+              <p class="gallery__name">Flower 2</p>
+              <img src="assets/Gallery/flower-2.jpg" alt="Flower 2" class="gallery__img">
+            </figure>
+            <!-- End seventh image -->
+            <figure class="gallery__figure">
+              <div class="gallery__bg"></div>
+              <p class="gallery__name">Fruit 2</p>
+              <img src="assets/Gallery/fruit-2.jpg" alt="Fruit 2" class="gallery__img">
+            </figure>
+            <!-- End Eighth image -->
+            <figure class="gallery__figure">
+              <div class="gallery__bg"></div>
+              <p class="gallery__name">Seed 3</p>
+              <img src="assets/Gallery/seed_3.jpg" alt="Seed 3" class="gallery__img">
+            </figure>
+            <!-- End Ninth image -->
+            <figure class="gallery__figure">
+              <div class="gallery__bg"></div>
+              <p class="gallery__name">Herb 3</p>
+              <img src="assets/Gallery/herb-3.jpg" alt="Herb 3" class="gallery__img">
+            </figure>
+            <!-- End Tenth image -->
+            <figure class="gallery__figure">
+              <div class="gallery__bg"></div>
+              <p class="gallery__name">Flower 3</p>
+              <img src="assets/Gallery/flower-3.jpg" alt="Flower 3" class="gallery__img">
+            </figure>
+            <!-- End Eleventh image -->
+            <figure class="gallery__figure">
+              <div class="gallery__bg"></div>
+              <p class="gallery__name">Fruit 3</p>
+              <img src="assets/Gallery/fruit-3.jpg" alt="Fruit 3" class="gallery__img">
+            </figure>
+            <!-- End Twelfth image -->
+          </div>
+        </div>
+    </section> <!-- End Gallery Section -->
+    <section id="Blog" data-nav="Blog" class="blog">
+      <div class="landing__container">
+        <h2>Latest Blog Articles</h2>
+        <div class="blog__articles">
+          <div class="blog__article">
+            <figure class="blog__image">
+              <img src="assets/Gallery/fruit-3.jpg" alt="fruit">
+            </figure>
+            <h3 class="blog__title">10 Reason to grow fruits</h3>
+            <p class="blog__par">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              Dignissimos incidunt magnam unde animi ad, esse quae eveniet quod accusamus 
+              maiores repudiandae tempore omnis. Animi adipisci accusantium eveniet voluptatem 
+              sequi reiciendis! <a href="#" class="blog__link">Read more...</a></p>
+          </div>
+          <!-- End First Article -->
+          <div class="blog__article">
+            <figure class="blog__image">
+              <img src="assets/Gallery/herb-3.jpg" alt="fruit">
+            </figure>
+            <h3 class="blog__title">How to start Vegetables Garden?</h3>
+            <p class="blog__par">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              Dignissimos incidunt magnam unde animi ad, esse quae eveniet quod accusamus 
+              maiores repudiandae tempore omnis. Animi adipisci accusantium eveniet voluptatem 
+              sequi reiciendis! <a href="#" class="blog__link">Read more...</a></p>
+          </div>
+          <!-- End Second Article -->
+          <div class="blog__article">
+            <figure class="blog__image">
+              <img src="assets/Gallery/seed_1.jpg" alt="fruit">
+            </figure>
+            <h3 class="blog__title">How to choose the right Seeds</h3>
+            <p class="blog__par">Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+              Dignissimos incidunt magnam unde animi ad, esse quae eveniet quod accusamus 
+              maiores repudiandae tempore omnis. Animi adipisci accusantium eveniet voluptatem 
+              sequi reiciendis! <a href="#" class="blog__link">Read more...</a></p>
+          </div>
+          <!-- End Third Article -->
+        </div>
+      </div>
+    </section> <!-- End Blog Section -->
+    <section id="Contact us" data-nav="Contact us" class="contact">
+      <div class="landing__container">
+        <h2>Contact us</h2>
+        <form action="" class="contact__form">
+          <div class="contact__block">
+            <label for="fname">Enter your Full Name</label>
+            <input type="text" class="contact__name" id="fname">
+          </div>
+          <div class="contact__block">
+            <label for="mail">Enter your Email Address</label>
+            <input type="email" class="contact__mail" id="mail">
+          </div>
+          <div class="contact__block">
+            <label for="msg">Enter your Message</label>
+            <textarea id="msg" cols="30" rows="10" class="contact__msg"></textarea>
+          </div>
+          <div class="contact__block">
+            <button type="submit" id="submit">Submit</button>
+          </div>
+        </form>
+      </div>
+    </section>  <!-- End Contact us Section -->
+  </main>
+  <footer class="page__footer">
+    <p>&copy Udacity</p>
+  </footer>
+  <div class="page__top" id="toTop">Top</div>
+<script src="js/app.js"></script>
+</body>
+</html>
